@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categories</title>
+</head>
+<body>
+{% include 'finance/partials/navbar.html' %}
+
+    <h1>Categories</h1>
+
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }}</li>
+        {% empty %}
+            <li>No categories yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="create/">Create new category</a>
+</body>
+</html>

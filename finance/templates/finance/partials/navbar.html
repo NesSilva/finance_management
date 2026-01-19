@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Category</title>
+       <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/user.png' %}" >
+</head>
+<body>
+ <div class="topnav">
+  <a  href="#home">Home</a>
+  <a href="{% url 'list_categories' %}">Categorias</a>
+  <a href="{% url 'list_incomes' %}">Incomes</a>
+  <a href="{% url 'list_expenses' %}">Expense</a>
+
+  <img src="{% static 'images/user.png' %}" alt="User" >
+
+
+</div>
+</body>

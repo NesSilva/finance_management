@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+
+</head>
+<body>  
+{% include 'finance/partials/navbar.html' %}
+
+
+
+<h3>Seus Incomes</h3>
+<table border="1">
+    <tr>
+        <th>Categoria</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data</th>
+    </tr>
+    {% for income in incomes %}
+    <tr>
+        <td>{{ income.category.name }}</td>
+        <td>{{ income.description }}</td>
+        <td>{{ income.amount }}</td>
+        <td>{{ income.date }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">Nenhum income registrado</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Total de Income: {{ total_income }}</h3>
+<a href="{% url 'create_income' %}">Create new income</a>
+
+</body>
+</html>

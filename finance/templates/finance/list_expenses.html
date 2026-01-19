@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+
+</head>
+<body>  
+{% include 'finance/partials/navbar.html' %}
+
+
+
+<h3>Seus Expenses</h3>
+<table border="1">
+    <tr>
+        <th>Categoria</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data</th>
+    </tr>
+    {% for expense in expenses %}
+    <tr>
+        <td>{{ expense.category.name }}</td>
+        <td>{{ expense.description }}</td>
+        <td>{{ expense.amount }}</td>
+        <td>{{ expense.date }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">Nenhum expense registrado</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Total de Expense: {{ total_expense }}</h3>
+<a href="{% url 'create_expense' %}">Create new expense</a>
+
+</body>
+</html>
