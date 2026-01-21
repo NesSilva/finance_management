@@ -177,15 +177,21 @@ def dashboard(request):
     user = User.objects.get(id_user=user_id)
 
     incomes = Income.objects.filter(user=user)
+    expenses = Expense.objects.filter(user=user)
 
     total_income = incomes.aggregate(total=Sum('amount'))['total'] or 0
+    total_expense = expenses.aggregate(total=Sum('amount'))['total'] or 0
 
+    balance = total_income - total_expense
     return render(
         request,
         'finance/dashboard.html',
         {
             'incomes': incomes,
+            'expenses': expenses,
             'user': user,
-            'total_income': total_income
+            'total_income': total_income,
+            'total_expense': total_expense,
+            'balance': balance
         }
     )

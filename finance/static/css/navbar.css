@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #2e2f1e;
+    background: #9ba206 !important;
     padding: 12px 30px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
@@ -24,4 +24,3 @@ img {
     object-fit: cover;
     cursor: pointer;
 }
-

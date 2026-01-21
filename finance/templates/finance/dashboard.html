@@ -1,40 +1,66 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
 
 {% include 'finance/partials/navbar.html' %}
 
-<h2>Bem-vindo, {{ user.username }}</h2>
+<div class="container">
 
-<h3>Seus Incomes</h3>
-<table border="1">
-    <tr>
-        <th>Categoria</th>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th>Data</th>
-    </tr>
-    {% for income in incomes %}
-    <tr>
-        <td>{{ income.category.name }}</td>
-        <td>{{ income.description }}</td>
-        <td>{{ income.amount }}</td>
-        <td>{{ income.date }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td colspan="4">Nenhum income registrado</td>
-    </tr>
-    {% endfor %}
-</table>
+    <h1>Bem-vindo, {{ user.username }}</h1>
 
-<h3>Total de Income: {{ total_income }}</h3>
+    <div class="cards">
+        <div class="card income">
+            <h3>Total Income</h3>
+            <p>{{ total_income }} €</p>
+        </div>
+
+        <div class="card expense">
+            <h3>Total Expense</h3>
+            <p>{{ total_expense }}</p>
+        </div>
+
+        <div class="card balance">
+            <h3>Balance</h3>
+            <p>{{balance}}</p>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <h2>Seus Incomes</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for income in incomes %}
+                <tr>
+                    <td>{{ income.category.name }}</td>
+                    <td>{{ income.description }}</td>
+                    <td class="amount">{{ income.amount }} €</td>
+                    <td>{{ income.date }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Nenhum income registado</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
 
 </body>
 </html>
