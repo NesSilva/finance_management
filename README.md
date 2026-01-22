@@ -46,13 +46,12 @@ Before starting, ensure you have:
 - Python **3.11+**
 - Pip + Virtualenv
 - Git
-- OS: Windows / Linux / macOS
 
 ---
 
 ## 🚀 Installation
 
-### Linux and macOS
+### Linux 
 
 ```bash
 git clone https://github.com/NesSilva/finance_management.git
