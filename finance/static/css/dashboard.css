@@ -80,3 +80,42 @@ td {
 tr:hover {
     background: #fafafa;
 }
+.chart-card {
+    height: 360px;
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin: 25px 0;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 14px;
+    color: #0d3b8e;
+    font-weight: 600;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+

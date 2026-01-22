@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tables.css' %}">
 
 
 </head>
@@ -11,9 +13,23 @@
 {% include 'finance/partials/navbar.html' %}
 
 
+<div class="container">
+    <div class="header">
+        <h1>Expenses</h1>
+        <a href="{% url 'create_expense' %}" class="btn">+ New Expense</a>
+    </div>
+    <div class="summary">
+        <div class="summary-card">
+            <h3>Total de Expense</h3>
+            <p>{{ total_expense }} €</p>
+        </div>
+    </div>
+    <div class="table-container">
+        <h2>Seus Expenses</h2>
 
-<h3>Seus Expenses</h3>
-<table border="1">
+    <table>
+        <thead>
+
     <tr>
         <th>Categoria</th>
         <th>Descrição</th>
@@ -24,7 +40,7 @@
     <tr>
         <td>{{ expense.category.name }}</td>
         <td>{{ expense.description }}</td>
-        <td>{{ expense.amount }}</td>
+        <td  class="amount negative">{{ expense.amount }} €</td>
         <td>{{ expense.date }}</td>
     </tr>
     {% empty %}
@@ -34,8 +50,6 @@
     {% endfor %}
 </table>
 
-<h3>Total de Expense: {{ total_expense }}</h3>
-<a href="{% url 'create_expense' %}">Create new expense</a>
 
 </body>
 </html>

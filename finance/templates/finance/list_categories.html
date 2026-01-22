@@ -1,22 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+    <meta charset="UTF-8">
     <title>Categories</title>
+
+    <link rel="stylesheet" href="{% static 'css/categories.css' %}">
 </head>
 <body>
+
 {% include 'finance/partials/navbar.html' %}
 
-    <h1>Categories</h1>
+<div class="container">
 
-    <ul>
-        {% for category in categories %}
-            <li>{{ category.name }}</li>
-        {% empty %}
-            <li>No categories yet.</li>
-        {% endfor %}
-    </ul>
+    <div class="header">
+        <h1>Categories</h1>
+        <a href="create/" class="btn">+ New Category</a>
+    </div>
 
-    <a href="create/">Create new category</a>
+    {% if categories %}
+        <div class="categories-grid">
+            {% for category in categories %}
+                <div class="category-card">
+                    {{ category.name }}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty">No categories yet.</p>
+    {% endif %}
+
+</div>
+
 </body>
 </html>

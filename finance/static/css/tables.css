@@ -1,0 +1,76 @@
+.summary {
+    margin: 20px 0 30px;
+}
+
+.summary-card {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    max-width: 320px;
+}
+
+.summary-card h3 {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.summary-card p {
+    margin: 10px 0 0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.table-container {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.table-container h2 {
+    margin: 0 0 12px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    background: #f2f3f7;
+    font-size: 14px;
+    color: #333;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+tr:hover {
+    background: #fafafa;
+}
+
+.amount {
+    font-weight: bold;
+}
+
+.positive {
+    color: #2ecc71;
+}
+
+.negative {
+    color: #ff2c14;
+}
+
+.empty-row {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+}

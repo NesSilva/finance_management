@@ -3,39 +3,59 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Incomes</title>
 
-
+    <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tables.css' %}">
 </head>
-<body>  
+<body>
+
 {% include 'finance/partials/navbar.html' %}
 
+<div class="container">
 
+    <div class="header">
+        <h1>Incomes</h1>
+        <a href="{% url 'create_income' %}" class="btn">+ New Income</a>
+    </div>
 
-<h3>Seus Incomes</h3>
-<table border="1">
-    <tr>
-        <th>Categoria</th>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th>Data</th>
-    </tr>
-    {% for income in incomes %}
-    <tr>
-        <td>{{ income.category.name }}</td>
-        <td>{{ income.description }}</td>
-        <td>{{ income.amount }}</td>
-        <td>{{ income.date }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td colspan="4">Nenhum income registrado</td>
-    </tr>
-    {% endfor %}
-</table>
+    <div class="summary">
+        <div class="summary-card">
+            <h3>Total Income</h3>
+            <p>{{ total_income }} €</p>
+        </div>
+    </div>
 
-<h3>Total de Income: {{ total_income }}</h3>
-<a href="{% url 'create_income' %}">Create new income</a>
+    <div class="table-container">
+        <h2>Seus Incomes</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for income in incomes %}
+                <tr>
+                    <td>{{ income.category.name }}</td>
+                    <td>{{ income.description }}</td>
+                    <td class="amount positive">{{ income.amount }} €</td>
+                    <td>{{ income.date }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="empty-row">Nenhum income registrado</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
 
 </body>
 </html>

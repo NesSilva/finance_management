@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -22,17 +26,30 @@
 
         <div class="card expense">
             <h3>Total Expense</h3>
-            <p>{{ total_expense }}</p>
+            <p>{{ total_expense }} €</p>
         </div>
 
         <div class="card balance">
             <h3>Balance</h3>
-            <p>{{balance}}</p>
+            <p>{{ balance }} €</p>
         </div>
     </div>
 
+    <!-- GRÁFICO -->
+    <div class="chart-card">
+    <div class="chart-header">
+        <h2>Resumo {{ chart_year }} (por mês)</h2>
+    </div>
+    <canvas id="yearChart"></canvas>
+</div>
+
+
+    <!-- TABELA (ÚLTIMOS 5) -->
     <div class="table-container">
-        <h2>Seus Incomes</h2>
+        <div class="table-header">
+            <h2>Últimos Incomes</h2>
+            <a class="link" href="{% url 'list_incomes' %}">Ver todos</a>
+        </div>
 
         <table>
             <thead>
@@ -61,6 +78,33 @@
     </div>
 
 </div>
+{{ month_labels|json_script:"month-labels" }}
+{{ chart_balance|json_script:"chart-balance" }}
+
+<script>
+  const labels = JSON.parse(document.getElementById('month-labels').textContent);
+  const balance = JSON.parse(document.getElementById('chart-balance').textContent);
+
+  new Chart(document.getElementById('yearChart'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        
+        { label: 'Balance (€)', data: balance, tension: 0.35, fill: true }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+
 
 </body>
 </html>
