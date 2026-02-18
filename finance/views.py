@@ -30,7 +30,7 @@ def create_category(request):
                 user=user  
             )
 
-            return redirect("create_category")
+            return redirect("list_categories")
 
     return render(request, "finance/create_category.html")
 

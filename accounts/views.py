@@ -31,7 +31,7 @@ def login_view(request):
                 Q(email=login) | Q(username=login),
                 password=password)
             request.session['user_id'] = user.id_user
-            return redirect('dashboard')  # <- muda aqui
+            return redirect('dashboard') 
         except User.DoesNotExist:
             error = 'Email ou password errados'
 
