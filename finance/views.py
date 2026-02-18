@@ -8,6 +8,7 @@ from django.db.models.functions import TruncDay
 
 
 def create_category(request):
+    error = None
     user_id = request.session.get('user_id')
 
     if not user_id:
@@ -18,12 +19,18 @@ def create_category(request):
     if request.method == "POST":
         name = request.POST.get("name")
 
-        Category.objects.create(
-            name=name,
-            user=user  
-        )
+        if Category.objects.filter(name=name, user=user).exists():
+            error = "this category already exists"
+            return render(request, "finance/create_category.html", {
+                "error": error
+            })
+        else:
+            Category.objects.create(
+                name=name,
+                user=user  
+            )
 
-        return redirect("create_category")
+            return redirect("create_category")
 
     return render(request, "finance/create_category.html")
 
